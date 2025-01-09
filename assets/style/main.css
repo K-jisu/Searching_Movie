@@ -1,0 +1,43 @@
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #3f3f3f;
+  color: white;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+}
+.section__card {
+  display: flex;
+  flex-direction: column;
+  /* width: 250px; */
+  max-width: 250px;
+  height: 350px;
+  border: 1px solid #000;
+  align-items: center;
+  border-radius: 10px;
+  
+}
+
+.section__image {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  border: 1px solid #527341;
+}
+
+.section__image img {
+  object-fit: cover;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.section__info {
+  width: 100%;
+  text-align: initial;
+  display: flex;
+  flex-direction: column;
+}
