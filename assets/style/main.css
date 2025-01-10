@@ -1,18 +1,4 @@
-header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: #3f3f3f;
-  color: white;
-  align-items: center;
-}
-header input{
-  margin: 20px;
-  width: 20%;
-}
-header h3{
-  margin: 10px;
-}
+
 
 section {
   display: grid;
@@ -68,6 +54,6 @@ section {
   font-size: 0.9rem;
 }
 
-.filtered{
+.dpn {
   display: none;
 }
