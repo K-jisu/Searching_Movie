@@ -64,17 +64,18 @@ section {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.641);
   justify-content: center;
-  /* overflow: auto; */
 }
 
 .modal__content {
   background-color: #fff;
   width: 40%;
-  position: absolute;
+  height: 80%;
+  position: fixed;
   top: 10%;
   left: 50%;
   border-radius: 10px;
   padding: 10px 20px;
+  overflow: auto;
   transform: translateX(-50%);
 }
 .modal__img {
@@ -82,6 +83,7 @@ section {
 }
 .modal__img > img {
   width: 100%;
+  border-radius: 10px;
 }
 
 .modal__info {
@@ -90,6 +92,10 @@ section {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 10px;
+}
+.modal__info p{
+  text-align: justify;
+
 }
 
 .modal__bookmark {

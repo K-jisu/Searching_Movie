@@ -28,8 +28,8 @@ const searchMovie = () => {
   for (const sectName of sectCard) {
     // section__card에서 section__moviename을 가져옴
     const movieName = sectName
-    .querySelector(".section__moviename")
-    .innerHTML.normalize("NFKD");
+      .querySelector(".section__moviename")
+      .innerHTML.normalize("NFKD");
     // section__moviename에 search값이 있으면 filtered 제거 없으면 filtered 추가.
     // console.log(movieName)
     if (movieName.includes(search.normalize("NFKD"))) {
@@ -41,8 +41,8 @@ const searchMovie = () => {
   }
 };
 
-const modalID = document.getElementById("modal")
-console.log(modalID)
+const modalID = document.getElementById("modal");
+console.log(modalID);
 
 // 모달 구현해야지
 section.addEventListener("click", async (e) => {

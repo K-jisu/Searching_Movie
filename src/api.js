@@ -67,4 +67,3 @@ export async function getDetails(movieId) {
     console.log("getPopular : ", error);
   }
 }
-
