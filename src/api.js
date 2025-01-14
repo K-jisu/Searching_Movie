@@ -55,3 +55,16 @@ export async function getPopular() {
     console.log("getPopular : ", error);
   }
 }
+
+export async function getDetails(movieId) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?language=ko`,
+      option
+    );
+    return res.json();
+  } catch (error) {
+    console.log("getPopular : ", error);
+  }
+}
+
