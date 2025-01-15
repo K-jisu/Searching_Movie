@@ -1,15 +1,16 @@
 section {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
   gap: 20px;
   justify-items: center;
   margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .section__card {
   display: flex;
   flex-direction: column;
-  /* width: 250px; */
+  width: 250px;
   max-width: 195px;
   height: 350px;
   align-items: center;
@@ -26,6 +27,7 @@ section {
 .section__image img {
   object-fit: cover;
   height: 100%;
+  width: 100%;
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -52,7 +54,7 @@ section {
   font-size: 0.9rem;
 }
 
-.dpn {
+.hidden {
   display: none;
 }
 
@@ -64,6 +66,9 @@ section {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.641);
   justify-content: center;
+}
+.modal ::-webkit-scrollbar {
+  display: none;
 }
 
 .modal__content {
@@ -93,9 +98,8 @@ section {
   flex-wrap: wrap;
   gap: 10px;
 }
-.modal__info p{
+.modal__info p {
   text-align: justify;
-
 }
 
 .modal__bookmark {
