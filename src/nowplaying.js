@@ -16,6 +16,7 @@ const postMovie = async () => {
 postMovie();
 
 input.addEventListener("keyup", (e) => {
+  // section.innerHTML = ""
   searchMovie();
 });
 
@@ -33,32 +34,28 @@ const searchMovie = () => {
     // section__moviename에 search값이 있으면 filtered 제거 없으면 filtered 추가.
     // console.log(movieName)
     if (movieName.includes(search.normalize("NFKD"))) {
-      sectName.classList.remove("dpn");
-      console.log("filtered");
+      sectName.classList.remove("hidden");
     } else {
-      sectName.classList.add("dpn");
+      sectName.classList.add("hidden");
     }
   }
 };
 
 const modalID = document.getElementById("modal");
-console.log(modalID);
 
 // 모달 구현해야지
 section.addEventListener("click", async (e) => {
-  const secTarget = e.target.closest(".section__card");
-  if (secTarget) {
-    const secTargetId = +secTarget.getAttribute("mid");
-    const getData = await getDetails(secTargetId);
+  const sectionTarget = e.target.closest(".section__card");
+  if (sectionTarget) {
+    const sectionTargetId = +sectionTarget.getAttribute("mid");
+    const getData = await getDetails(sectionTargetId);
     modalID.innerHTML = modalTemplate(getData);
     document.body.style.overflow = "hidden";
-    console.log(secTargetId);
-    console.log(getData);
-    modalID.classList.remove("dpn");
+    modalID.classList.remove("hidden");
   }
 });
 modalID.addEventListener("click", (e) => {
   if (!e.target.closest(".modal__content")) {
-    modalID.classList.add("dpn");
+    modalID.classList.add("hidden");
   }
 });
