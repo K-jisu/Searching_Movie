@@ -6,13 +6,13 @@ body {
   padding: 0;
   text-decoration: none;
   font-family: "Noto Sans KR", serif;
-  background-color: #d7d7d7;
+  background: url(/assets/image/background.jpg);
 }
 body::-webkit-scrollbar {
   display: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
 }
@@ -34,15 +34,62 @@ main {
 header {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  background-color: #3f3f3f;
+  flex-direction: row;
   color: white;
   align-items: center;
+  justify-content: space-around;
+  margin-top: 15px;
 }
-header input {
-  margin: 20px;
-  width: 20%;
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  transform: translateX(-215px);
 }
-header h3 {
+
+nav h3 {
   margin: 10px;
+  cursor: pointer;
+}
+
+.header__info {
+  display: flex;
+  right: -180px;
+  position: relative;
+  align-items: center;
+  gap: 10px;
+}
+
+.search__icon {
+  transform: translateX(165px);
+  z-index: 1;
+}
+
+.search__input {
+  margin: 20px;
+  width: 10%;
+  height: 30px;
+  border-radius: 10px;
+  transform: translateX(100px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+.search__icon:hover + .search__input {
+  transform: translateX(-45px);
+  opacity: 1;
+  width: 50%;
+}
+
+.search__input:hover {
+  transform: translateX(-45px);
+  opacity: 1;
+  width: 50%;
+}
+#gobookmark {
+  position: absolute;
+  right: 0px;
+}
+#gobookmark :hover {
+  transform: scale(1.1);
 }

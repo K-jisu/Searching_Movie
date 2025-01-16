@@ -3,28 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>popular</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/style/main.css" />
     <link rel="stylesheet" href="/assets/style/common.css" />
   </head>
   <body>
     <!-- Header -->
     <header>
-      <h1>영화 검색</h1>
-      <input
+      <nav>
+        <h3><a href="index.html">Popular</a></h3>
+        <h3><a href="nowplaying.html">Now playing</a></h3>
+      </nav>
+      <div class="header__info">
+        <i class="fa-solid fa-magnifying-glass fa-2x search__icon"></i>
+        <input
         id="header__input"
+        class="search__input"
         type="text"
         placeholder="영화를 검색하세요..."
-      />
-      <h3 id="gobookmark">북마크 보기</h3>
-      <!-- <h3><a href="nowplaying.html">Now playing</a></h3> -->
-      <!-- <h3><a href="index.html">Home</a></h3> -->
+        />
+        <h3 id="gobookmark"><i class="fa-solid fa-book-bookmark fa-2x"></i></h3>
+      </div>
     </header>
     <!-- main -->
     <main id="main">
       <section id="section"></section>
       <div id="modal" class="modal hidden"></div>
     </main>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.js" defer></script>
   </body>
 </html>
