@@ -40,8 +40,8 @@ section.addEventListener("click", async (e) => {
   if (!sectionTarget) {
     return;
   } else if (sectionTarget) {
-    const sectionTargetId = +sectionTarget.getAttribute("mid");
-    const getData = await getDetails(sectionTargetId);
+    const movieId = +sectionTarget.getAttribute("mid");
+    const getData = await getDetails(movieId);
     modalID.innerHTML = modalTemplate(getData);
     document.body.style.overflow = "hidden";
     modalID.classList.remove("hidden");
@@ -49,16 +49,38 @@ section.addEventListener("click", async (e) => {
 });
 
 // 북마크 추가
-const idArr = new Set();
+let idArr = [];
 modalID.addEventListener("click", (e) => {
-  const bookMarkBtn = e.target.closest("#bookmark");
+  const closestBookmark = e.target.closest("#bookmark");
+
   // 북마크 버튼 누를때
-  if (bookMarkBtn) {
+  if (closestBookmark) {
+    const bookmarkBtn = document.getElementById("bookmark");
     const modalConatiner = document.getElementById("modal__container");
-    const movieId = modalConatiner.getAttribute("mid");
-    idArr.add(+movieId);
-    localStorage.setItem("id", JSON.stringify([...idArr]));
+    const movieId = +modalConatiner.getAttribute("mid");
+    const LocalData = JSON.parse(localStorage.getItem("id"));
+    let localIdList = LocalData === null ? [] : [...LocalData];
+    // 북마크 id 중첩 제거
+    if (localIdList.includes(movieId)) {
+      window.localStorage.clear();
+      alert("북마크가 제거되었습니다.");
+      // bookmarkBtn.classList.remove("marked")
+      // bookmarkBtn.classList.add("unmarked")
+      idArr = [];
+      localIdList = localIdList.filter((item) => item !== movieId);
+      localIdList.forEach((id) => {
+        idArr.push(+id);
+      });
+      localStorage.setItem("id", JSON.stringify([...idArr]));
+    } else {
+      alert("북마크가 추가되었습니다.");
+      // bookmarkBtn.classList.remove("unmarked")
+      // bookmarkBtn.classList.add("marked")
+      idArr.push(+movieId);
+      localStorage.setItem("id", JSON.stringify([...idArr]));
+    }
   }
+
   // 모달 창 닫기
   if (!e.target.closest(".modal__content")) {
     modalID.classList.add("hidden");
@@ -70,15 +92,27 @@ modalID.addEventListener("click", (e) => {
 goBookMark.addEventListener("click", async () => {
   section.innerHTML = "";
   const LocalData = localStorage.getItem("id");
-  const idList = [...JSON.parse(LocalData)];
+  const localIdList = [...JSON.parse(LocalData)];
   const dataList = await Promise.all(
-    idList.map(async (movieId) => {
+    localIdList.map(async (movieId) => {
       const res = await getDetails(movieId);
       return res;
     })
   );
   template(dataList);
 });
+
+// window.onload = function () {
+//   const sectionCardList = [...document.getElementsByClassName("section__card")];
+
+//   sectionCardList.forEach((card) => {
+//     const id = +card.getAttribute("mid");
+//   });
+// console.log(movieIdList)
+// console.log(localIdList);
+// };
+
+// console.log(localIdList);
 
 // 무한 스크롤 만들어야지
 // 할게 많구만
