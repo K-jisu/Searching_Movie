@@ -18,6 +18,7 @@ TMDB API를 사용하여 영화를 검색할 수 있는 웹페이지입니다.
 
 # 프로젝트 구조
 📁
+```
 |- assets /
 |   |- iamge /
 |   |  |- background.jpg 
@@ -34,3 +35,4 @@ TMDB API를 사용하여 영화를 검색할 수 있는 웹페이지입니다.
 |
 |- nowplaying.html
 |- index.html
+```
