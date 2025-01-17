@@ -24,7 +24,8 @@ TMDB API를 사용하여 영화를 검색할 수 있는 웹페이지입니다.
 |   |  |- background.jpg 
 |   |   
 |   |- style /
-|      |- 
+|      |- common.css
+|      |- main.css
 |
 |- src /
 |   |- api.js
