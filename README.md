@@ -19,21 +19,18 @@ TMDB API를 사용하여 영화를 검색할 수 있는 웹페이지입니다.
 # 프로젝트 구조
 📁
 ```
-|- assets /
-|   |- iamge /
-|   |  |- background.jpg 
-|   |   
-|   |- style /
-|      |- common.css
-|      |- main.css
-|
-|- src /
-|   |- api.js
-|   |- key.js
-|   |- main.js
-|   |- nowplaying.js
-|   |- template.js
-|
-|- nowplaying.html
-|- index.html
+ ┣ 📂assets
+ ┃ ┣ 📂image
+ ┃ ┃ ┣ 📜background.jpg
+ ┃ ┗ 📂style
+ ┃ ┃ ┣ 📜common.css
+ ┃ ┃ ┗ 📜main.css
+ ┣ 📂src
+ ┃ ┣ 📜api.js
+ ┃ ┣ 📜key.js
+ ┃ ┣ 📜main.js
+ ┃ ┣ 📜nowplaying.js
+ ┃ ┗ 📜template.js
+ ┣ 📜index.html
+ ┣ 📜nowplaying.html
 ```
