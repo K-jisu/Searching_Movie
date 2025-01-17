@@ -17,7 +17,6 @@ TMDB API를 사용하여 영화를 검색할 수 있는 웹페이지입니다.
 - [HTMLCollection 값은 있는데 length는 0?](https://velog.io/@wltn7star/TIL18.-HTMLCollection-%EA%B0%92%EC%9D%80-%EC%9E%88%EB%8A%94%EB%8D%B0-length%EB%8A%94-0)
 
 # 프로젝트 구조
-📁
 ```
  ┣ 📂assets
  ┃ ┣ 📂image
