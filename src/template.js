@@ -2,7 +2,8 @@ export const template = (movielist) => {
   movielist.forEach((movie) => {
     // 구조분해할당 알아보기
     const { id, title, poster_path, vote_average } = movie;
-
+    console.log(id);
+    
     const sectionContiner = document.createElement("div");
     sectionContiner.classList.add("section__container");
 
@@ -37,7 +38,6 @@ export const modalTemplate = (movie) => {
             <h3 class="modal__date">개봉일 : ${release_date}</h3>
             <h3 class="modal__rating">평점 : ${vote_average}</h3>
           </div>
-          
         </div>
 `;
 };

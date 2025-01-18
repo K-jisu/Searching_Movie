@@ -5,6 +5,7 @@ const input = document.getElementById("header__input");
 const section = document.getElementById("section");
 const modalID = document.getElementById("modal");
 const goBookMark = document.getElementById("gobookmark");
+let bookMarkStat = false;
 
 // search 기능
 // debounce 추가
@@ -34,6 +35,19 @@ const postMovie = async () => {
 };
 postMovie();
 
+const getLocalData = async () => {
+  const LocalData = localStorage.getItem("id");
+  const localIdList = [...JSON.parse(LocalData)];
+  const dataList = await Promise.all(
+    localIdList.map(async (movieId) => {
+      const res = await getDetails(movieId);
+      return res;
+    })
+  );
+  console.log(dataList);
+  return dataList;
+};
+
 // 모달 UI
 section.addEventListener("click", async (e) => {
   const sectionTarget = e.target.closest(".section__card");
@@ -50,12 +64,11 @@ section.addEventListener("click", async (e) => {
 
 // 북마크 추가
 let idArr = [];
-modalID.addEventListener("click", (e) => {
+modalID.addEventListener("click", async (e) => {
   const closestBookmark = e.target.closest("#bookmark");
 
   // 북마크 버튼 누를때
   if (closestBookmark) {
-    const bookmarkBtn = document.getElementById("bookmark");
     const modalConatiner = document.getElementById("modal__container");
     const movieId = +modalConatiner.getAttribute("mid");
     const LocalData = JSON.parse(localStorage.getItem("id"));
@@ -64,20 +77,26 @@ modalID.addEventListener("click", (e) => {
     if (localIdList.includes(movieId)) {
       window.localStorage.clear();
       alert("북마크가 제거되었습니다.");
-      // bookmarkBtn.classList.remove("marked")
-      // bookmarkBtn.classList.add("unmarked")
       idArr = [];
       localIdList = localIdList.filter((item) => item !== movieId);
       localIdList.forEach((id) => {
         idArr.push(+id);
       });
       localStorage.setItem("id", JSON.stringify([...idArr]));
+      if (bookMarkStat === true) {
+        modalID.classList.add("hidden");
+        section.innerHTML = "";
+        let LocalDataList = await getLocalData();
+        template(LocalDataList);
+      }
     } else {
       alert("북마크가 추가되었습니다.");
-      // bookmarkBtn.classList.remove("unmarked")
-      // bookmarkBtn.classList.add("marked")
       idArr.push(+movieId);
       localStorage.setItem("id", JSON.stringify([...idArr]));
+      if (bookMarkStat === true) {
+        let LocalDataList = await getLocalData();
+        template(LocalDataList);
+      }
     }
   }
 
@@ -91,14 +110,8 @@ modalID.addEventListener("click", (e) => {
 // 북마크 확인하기
 goBookMark.addEventListener("click", async () => {
   section.innerHTML = "";
-  const LocalData = localStorage.getItem("id");
-  const localIdList = [...JSON.parse(LocalData)];
-  const dataList = await Promise.all(
-    localIdList.map(async (movieId) => {
-      const res = await getDetails(movieId);
-      return res;
-    })
-  );
+  bookMarkStat = true;
+  let dataList = await getLocalData();
   template(dataList);
 });
 
